@@ -27,7 +27,7 @@
 
 <p>
   <strong>Sucursal:</strong>
-  <%= @empleado.sucursal_id %>
+  <%= Sucursal.find_by(id: @empleado.sucursal_id ) %>
 </p>
 
 <%= link_to 'Editar empleado', edit_empleado_path(@empleado) %> |
