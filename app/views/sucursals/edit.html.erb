@@ -1,0 +1,8 @@
+<h1>Editing Sucursal</h1>
+<% if @sucursal.usuario_id == session[:user_id] %>
+<%= render 'form', sucursal: @sucursal %>
+<% else %>
+No puede actualizar una sucursal que usted no registró.
+<% end %>
+
+<%= link_to 'Regresar al perfil', usuarios_path %>

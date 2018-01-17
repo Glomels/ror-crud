@@ -1,0 +1,38 @@
+es:
+  hello: 'HOLA'
+  activerecord:
+    attributes:
+      sucursal:
+        usuario: "Usuario"
+      usuario:
+        email: "Correo electrónico"
+        password: "Contraseña"
+        password_confirmation: "Confirmar contraseña"
+    errors:
+      models:
+        sucursal:
+          attributes:
+            usuario:
+              name: "Usuario"
+        usuario:
+          attributes:
+            email:
+              name: "correo"
+              blank: "no puede estar vacío."
+              invalid: "es inválido."
+            nombre:
+              blank: "no puede estar vacío."
+            apellido:
+              blank: "no puede estar vacío."
+            rfc:
+              blank: "no puede estar vacío."
+              too_short: "Debe ser de 12 o 13 caracteres."
+              too_long: "Debe ser de 12 o 13 caracteres."
+            empresa:
+              blank: "no puede estar vacío."
+            password:
+              too_short: "es muy corta."
+              blank: "no puede estar vacío."
+            password_confirmation:
+              confirmation: "debe ser igual a Password."
+              blank: "no puede estar vacío."

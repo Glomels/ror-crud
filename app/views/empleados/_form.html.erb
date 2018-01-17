@@ -1,0 +1,48 @@
+<%= form_with(model: empleado, local: true) do |form| %>
+  <% if empleado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= empleado.errors.count %> errores encontrados</h2>
+
+      <ul>
+      <% empleado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, id: :empleado_nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellido %>
+    <%= form.text_field :apellido, id: :empleado_apellido %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rfc %>
+    <%= form.text_field :rfc, id: :empleado_rfc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :puesto %>
+    <%= form.text_field :puesto, id: :empleado_puesto %>
+  </div>
+
+  <div class="field">
+    <%= form.label :usuario_id %>
+    <%= form.text_field :usuario_id, id: :empleado_usuario_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sucursal_id %>
+    <%= form.select :sucursal_id, options_for_select(Sucursal.where(usuario_id: session[:user_id]).collect { |sucursal| 
+  [sucursal.nombre.titleize, sucursal.id] }, 1), {}, { id: 'sucursal_select' }  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Crear empleado"%>
+  </div>
+<% end %>

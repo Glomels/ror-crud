@@ -1,35 +1,74 @@
+<% if !logged_in? -%>
+Conéctate para ver tu perfil.
+<%= link_to "Conectarse al Sistema", login_path %>
+<%= link_to "Registrar Usuario", new_usuario_path %>
+<% else -%>
+
+<% active_user = Usuario.find(session[:user_id]) %>
+Conectado como <%= active_user.nombre %>
+<%# Usuario.all.each do |usuario| %>
+<%#= usuario.nombre %>
+<%# end %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Usuarios</h1>
+<h1>Perfil</h1>
 
 <table>
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Email</th>
+      <th>Apellido</th>
+      <th>Correo Electrónico</th>
       <th>Rfc</th>
       <th>Empresa</th>
-      <th>Password</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @usuarios.each do |usuario| %>
       <tr>
-        <td><%= usuario.nombre %></td>
-        <td><%= usuario.email %></td>
-        <td><%= usuario.rfc %></td>
-        <td><%= usuario.empresa %></td>
-        <td><%= usuario.password %></td>
-        <td><%= link_to 'Show', usuario %></td>
-        <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
-        <td><%= link_to 'Destroy', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= active_user.nombre %></td>
+        <td><%= active_user.apellido %></td>
+        <td><%= active_user.email %></td>
+        <td><%= active_user.rfc %></td>
+        <td><%= active_user.empresa %></td>
+        <td><%= link_to 'Editar Datos', edit_usuario_path(active_user) %></td>
+        <td><%= link_to 'Eliminar Cuenta', usuario_path(active_user), method: :delete, data: {confirm: "Esta acción es irreversible. Confirme que está seguro de borrar su cuenta."} %></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Usuario', new_usuario_path %>
+<% if Sucursal.where(usuario_id: session[:user_id]).count == 0 %>
+Aun no registra ninguna sucursal.
+<% else %>
+<table>
+  <thead>
+    <tr>
+      <th>Sucursales</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% Sucursal.where(usuario_id: session[:user_id]).each do |sucursal| %>
+      <tr>
+        <td><%= sucursal.nombre %></td>
+        <td><%= link_to 'Detalles', sucursal %></td>
+        <td><%= link_to 'Editar Datos', edit_sucursal_path(sucursal) %></td>
+        <td><%= link_to 'Eliminar Sucursal', sucursal_path(sucursal), method: :delete, data: {confirm: "Esta acción es irreversible. Confirme que está seguro de borrar esta sucursal."} %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+<% end %>
+
+<br>
+<br>
+
+<%= link_to 'Registrar Sucursal', new_sucursal_path %><br>
+<%= link_to 'Registrar Empleado', new_empleado_path %><br>
+<%= link_to 'Cerrar Sesión', logout_path, method: :delete %>
+<% end -%>

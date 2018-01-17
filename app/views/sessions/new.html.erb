@@ -1,0 +1,40 @@
+<% if logged_in? -%>
+Bienvenido, <%=Usuario.find(session[:user_id]).nombre %><br>
+Ve a tu <%= link_to "dashboard.", usuarios_path %><br>
+O <%= link_to "cierra sesión.", logout_path, method: :delete %>
+<% else -%>
+
+
+<% provide(:title, "Log in") %>
+<h1>Registro al Sistema</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+    
+      <% if flash[:danger] -%>
+      <p class="error"><%= flash[:error] %>
+
+      <%= f.label "Correo Electrónicox" %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label "Contraseña" %>
+      <%= f.password_field :password, class: 'form-control' %>
+        
+        </p>
+      <% else -%>
+      <%= f.label "Correo Electrónico" %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label "Contraseña" %>
+      <%= f.password_field :password, class: 'form-control' %>
+      <% end -%>
+
+      <%= f.submit "Conectarse", class: "btn btn-primary" %>
+    <% end %>
+
+    <p>Para usuarios nuevos: <%= link_to "Forma de registro", new_usuario_path %></p>
+  </div>
+</div>
+
+<% end -%>

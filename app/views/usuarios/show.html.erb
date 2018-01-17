@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% flash[:notice] %></p>
 
 <p>
   <strong>Nombre:</strong>
@@ -6,7 +6,12 @@
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>Apellido:</strong>
+  <%= @usuario.apellido %>
+</p>
+
+<p>
+  <strong>Correo Electrónico</strong>
   <%= @usuario.email %>
 </p>
 
@@ -20,10 +25,4 @@
   <%= @usuario.empresa %>
 </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @usuario.password %>
-</p>
-
-<%= link_to 'Edit', edit_usuario_path(@usuario) %> |
-<%= link_to 'Back', usuarios_path %>
+<%= link_to 'Ir al Dashboard', usuarios_path %>

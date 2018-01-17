@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116081125) do
+ActiveRecord::Schema.define(version: 20180117015651) do
+
+  create_table "empleados", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellido"
+    t.string "rfc"
+    t.string "puesto"
+    t.integer "usuario_id"
+    t.integer "sucursal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sucursals", force: :cascade do |t|
+    t.string "nombre"
+    t.string "calle"
+    t.string "colonia"
+    t.integer "numero_exterior"
+    t.integer "numero_interior"
+    t.integer "codigo_postal"
+    t.string "ciudad"
+    t.string "pais"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "usuario_id"
+  end
 
   create_table "usuarios", force: :cascade do |t|
     t.string "nombre"
@@ -20,6 +45,8 @@ ActiveRecord::Schema.define(version: 20180116081125) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "apellido"
   end
 
 end
