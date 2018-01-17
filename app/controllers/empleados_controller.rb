@@ -24,7 +24,9 @@ class EmpleadosController < ApplicationController
   # POST /empleados
   # POST /empleados.json
   def create
+    params[:usuario_id] = session[:user_id]
     @empleado = Empleado.new(empleado_params)
+    @sucursal.usuario_id = session[:user_id]
 
     respond_to do |format|
       if @empleado.save
@@ -42,7 +44,7 @@ class EmpleadosController < ApplicationController
   def update
     respond_to do |format|
       if @empleado.update(empleado_params)
-        format.html { redirect_to @empleado, notice: 'Empleado was successfully updated.' }
+        format.html { redirect_to @empleado, notice: 'La informaciíon del empleado ha sido actualizada.' }
         format.json { render :show, status: :ok, location: @empleado }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class EmpleadosController < ApplicationController
   def destroy
     @empleado.destroy
     respond_to do |format|
-      format.html { redirect_to empleados_url, notice: 'Empleado was successfully destroyed.' }
+      format.html { redirect_to empleados_url, notice: 'Empleado ha sido eliminado de la base de datos.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +67,7 @@ class EmpleadosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_empleado
       @empleado = Empleado.find(params[:id])
+      @empleado.usuario_id = session[:user_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

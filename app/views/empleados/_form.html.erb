@@ -32,11 +32,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :usuario_id %>
-    <%= form.text_field :usuario_id, id: :empleado_usuario_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :sucursal_id %>
     <%= form.select :sucursal_id, options_for_select(Sucursal.where(usuario_id: session[:user_id]).collect { |sucursal| 
   [sucursal.nombre.titleize, sucursal.id] }, 1), {}, { id: 'sucursal_select' }  %>

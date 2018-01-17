@@ -40,7 +40,34 @@
   <%= @sucursal.pais %>
 </p>
 
-<p>
+<% if Empleado.where(sucursal_id: @sucursal.id).count == 0 %>
+Aun no registra ninguna sucursal.
+<% else %>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>RFC</th>
+      <th>Puesto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% Empleado.where(sucursal_id: @sucursal.id).each do |sucursal| %>
+      <tr>
+        <td><%= sucursal.nombre %></td>
+        <td><%= link_to 'Detalles', sucursal %></td>
+        <td><%= link_to 'Editar Datos', edit_sucursal_path(sucursal) %></td>
+        <td><%= link_to 'Eliminar Sucursal', sucursal_path(sucursal), method: :delete, data: {confirm: "Esta acción es irreversible. Confirme que está seguro de borrar esta sucursal."} %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+<% end %>
+
+
   <!--<strong>Admin_user:</strong>
   <#%= Usuario.find_by(id: @sucursal.usuario_id).nombre %>
 </p>-->
