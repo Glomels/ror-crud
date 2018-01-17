@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% notice %></p>
 
 <h1>Empleados</h1>
 
@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @empleados.each do |empleado| %>
+    <% Empleado.where(usuario_id: session[:user_id]).each do |empleado| %>
       <tr>
         <td><%= empleado.nombre %></td>
         <td><%= empleado.apellido %></td>

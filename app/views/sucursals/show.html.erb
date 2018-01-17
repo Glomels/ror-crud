@@ -1,5 +1,7 @@
 <p id="notice"><% notice %></p>
-
+<h1>
+   Datos de la sucursal
+</h1>
 <p>
   <strong>Nombre:</strong>
   <%= @sucursal.nombre %>
@@ -39,10 +41,14 @@
   <strong>Pais:</strong>
   <%= @sucursal.pais %>
 </p>
-
+<br>
 <% if Empleado.where(sucursal_id: @sucursal.id).count == 0 %>
-Aun no registra ninguna sucursal.
+Aun no registra ningun empleado a esta sucursal.
 <% else %>
+<h2>
+  Empleados de sucursal <%= @sucursal.nombre %>
+</h2>
+  # de Empleados: <%= Empleado.where(sucursal_id: @sucursal.id).count %>
 <table>
   <thead>
     <tr>
@@ -55,12 +61,15 @@ Aun no registra ninguna sucursal.
   </thead>
 
   <tbody>
-      <% Empleado.where(sucursal_id: @sucursal.id).each do |sucursal| %>
+      <% Empleado.where(sucursal_id: @sucursal.id).each do |empleado| %>
       <tr>
-        <td><%= sucursal.nombre %></td>
-        <td><%= link_to 'Detalles', sucursal %></td>
-        <td><%= link_to 'Editar Datos', edit_sucursal_path(sucursal) %></td>
-        <td><%= link_to 'Eliminar Sucursal', sucursal_path(sucursal), method: :delete, data: {confirm: "Esta acción es irreversible. Confirme que está seguro de borrar esta sucursal."} %></td>
+        <td><%= empleado.nombre.capitalize %></td>
+        <td><%= empleado.apellido.capitalize %></td>
+        <td><%= empleado.rfc.upcase %></td>
+        <td><%= empleado.puesto.capitalize %></td>
+        <td><%= link_to 'Detalles', empleado %></td>
+        <td><%= link_to 'Editar Datos', edit_empleado_path(empleado) %></td>
+        <td><%= link_to 'Eliminar Empleado', empleado_path(empleado), method: :delete, data: {confirm: "Esta acción es irreversible. Confirme que está seguro de borrar esta sucursal."} %></td>
       </tr>
       <% end %>
   </tbody>
@@ -71,6 +80,9 @@ Aun no registra ninguna sucursal.
   <!--<strong>Admin_user:</strong>
   <#%= Usuario.find_by(id: @sucursal.usuario_id).nombre %>
 </p>-->
+<br>
+<br>
 
 <%= link_to 'Editar Sucursal', edit_sucursal_path(@sucursal) %> |
+<%= link_to 'Registrar Empleado', new_empleado_path %><br><br>
 <%= link_to 'Regresar al perfil', usuarios_path %>

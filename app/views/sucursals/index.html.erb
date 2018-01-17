@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% notice %></p>
 
 <h1>Sucursales</h1>
 
@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @sucursals.each do |sucursal| %>
+    <% Sucursal.where(usuario_id: session[:user_id]).each do |sucursal| %>
       <tr>
         <td><%= sucursal.nombre %></td>
         <td><%= link_to 'Mostrar detalles', sucursal %></td>

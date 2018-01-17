@@ -1,5 +1,62 @@
 <h1>Registrar Sucursal</h1>
 
-<%= render 'form', sucursal: @sucursal %>
+<%= form_with(model: @sucursal, local: true) do |form| %>
+  <% if @sucursal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @sucursal.errors.count%> errores encontrados</h2>
+
+      <ul>
+      <% @sucursal.errors.full_messages.each do |message| %>
+        <li><%= t message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, id: :sucursal_nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :calle %>
+    <%= form.text_field :calle, id: :sucursal_calle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :colonia %>
+    <%= form.text_field :colonia, id: :sucursal_colonia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :numero_exterior %>
+    <%= form.text_field :numero_exterior, id: :sucursal_numero_exterior %>
+  </div>
+
+  <div class="field">
+    <%= form.label :numero_interior %>
+    <%= form.text_field :numero_interior, id: :sucursal_numero_interior %>
+  </div>
+
+  <div class="field">
+    <%= form.label :codigo_postal %>
+    <%= form.text_field :codigo_postal, id: :sucursal_codigo_postal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ciudad %>
+    <%= form.text_field :ciudad, id: :sucursal_ciudad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pais %>
+    <%= form.text_field :pais, id: :sucursal_pais %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Crear sucursal"%>
+  </div>
+<% end %>
+
 
 <%= link_to 'Regresar al perfil', usuarios_path %>

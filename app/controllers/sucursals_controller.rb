@@ -58,7 +58,7 @@ class SucursalsController < ApplicationController
   def destroy
     @sucursal.destroy
     respond_to do |format|
-      format.html { redirect_to sucursals_url, notice: 'Sucursal ha sido eliminada.' }
+      format.html { redirect_to usuarios_path, notice: 'Sucursal ha sido eliminada.' }
       format.json { head :no_content }
     end
   end

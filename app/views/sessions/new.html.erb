@@ -1,5 +1,5 @@
 <% if logged_in? -%>
-Bienvenido, <%=Usuario.find(session[:user_id]).nombre %><br>
+Conectado como <%=Usuario.find(session[:user_id]).nombre %><br>
 Ve a tu <%= link_to "dashboard.", usuarios_path %><br>
 O <%= link_to "cierra sesión.", logout_path, method: :delete %>
 <% else -%>
@@ -15,7 +15,7 @@ O <%= link_to "cierra sesión.", logout_path, method: :delete %>
       <% if flash[:danger] -%>
       <p class="error"><%= flash[:error] %>
 
-      <%= f.label "Correo Electrónicox" %>
+      <%= f.label "Correo Electrónico" %>
       <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label "Contraseña" %>

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% notice %></p>
 
 <p>
   <strong>Nombre:</strong>
@@ -22,12 +22,12 @@
 
 <p>
   <strong>Administrador:</strong>
-  <%= Usuario.find_by(id: @empleado.usuario_id ) %>
+  <%= Usuario.find_by(id: @empleado.usuario_id ).nombre + ' ' + Usuario.find_by(id: @empleado.usuario_id ).apellido %>
 </p>
 
 <p>
   <strong>Sucursal:</strong>
-  <%= Sucursal.find_by(id: @empleado.sucursal_id ) %>
+  <%= Sucursal.find_by(id: @empleado.sucursal_id ).nombre %>
 </p>
 
 <%= link_to 'Editar empleado', edit_empleado_path(@empleado) %> |

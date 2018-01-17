@@ -1,4 +1,5 @@
 class Usuario < ApplicationRecord
+  has_many :sucursals
   before_save { self.email = email.downcase}
   validates :nombre, presence: true
   validates :apellido, presence: true

@@ -10,7 +10,7 @@ Conectado como <%= active_user.nombre %>
 <%#= usuario.nombre %>
 <%# end %>
 
-<p id="notice"><%= notice %></p>
+<p id="notice"><% notice %></p>
 
 <h1>Perfil</h1>
 
@@ -28,11 +28,11 @@ Conectado como <%= active_user.nombre %>
 
   <tbody>
       <tr>
-        <td><%= active_user.nombre %></td>
-        <td><%= active_user.apellido %></td>
-        <td><%= active_user.email %></td>
-        <td><%= active_user.rfc %></td>
-        <td><%= active_user.empresa %></td>
+        <td><%= active_user.nombre.capitalize %></td>
+        <td><%= active_user.apellido.capitalize %></td>
+        <td><%= active_user.email.downcase %></td>
+        <td><%= active_user.rfc.upcase %></td>
+        <td><%= active_user.empresa.capitalize %></td>
         <td><%= link_to 'Editar Datos', edit_usuario_path(active_user) %></td>
         <td><%= link_to 'Eliminar Cuenta', usuario_path(active_user), method: :delete, data: {confirm: "Esta acción es irreversible. Confirme que está seguro de borrar su cuenta."} %></td>
       </tr>
@@ -48,6 +48,7 @@ Aun no registra ninguna sucursal.
   <thead>
     <tr>
       <th>Sucursales</th>
+      <th>Empleados</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -56,6 +57,7 @@ Aun no registra ninguna sucursal.
       <% Sucursal.where(usuario_id: session[:user_id]).each do |sucursal| %>
       <tr>
         <td><%= sucursal.nombre %></td>
+        <td><%= Empleado.where(sucursal_id: sucursal.id).count %></td>
         <td><%= link_to 'Detalles', sucursal %></td>
         <td><%= link_to 'Editar Datos', edit_sucursal_path(sucursal) %></td>
         <td><%= link_to 'Eliminar Sucursal', sucursal_path(sucursal), method: :delete, data: {confirm: "Esta acción es irreversible. Confirme que está seguro de borrar esta sucursal."} %></td>

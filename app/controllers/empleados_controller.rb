@@ -30,7 +30,7 @@ class EmpleadosController < ApplicationController
 
     respond_to do |format|
       if @empleado.save
-        format.html { redirect_to @empleado, notice: 'Empleado was successfully created.' }
+        format.html { redirect_to @empleado, notice: 'Empleado ha sido registrado.' }
         format.json { render :show, status: :created, location: @empleado }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class EmpleadosController < ApplicationController
   def destroy
     @empleado.destroy
     respond_to do |format|
-      format.html { redirect_to empleados_url, notice: 'Empleado ha sido eliminado de la base de datos.' }
+      format.html { redirect_to usuarios_path, notice: 'Empleado ha sido eliminado de la base de datos.' }
       format.json { head :no_content }
     end
   end

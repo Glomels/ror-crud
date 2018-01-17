@@ -2,6 +2,8 @@ es:
   hello: 'HOLA'
   activerecord:
     attributes:
+      empleado:
+        sucursal: "Sucursal"
       sucursal:
         usuario: "Usuario"
       usuario:
@@ -10,6 +12,12 @@ es:
         password_confirmation: "Confirmar contraseña"
     errors:
       models:
+        empleado:
+          attributes:
+            rfc:
+              taken: "Este RFC ya existe en el sistema."
+            sucursal:
+              name: "Sucursal"
         sucursal:
           attributes:
             usuario:

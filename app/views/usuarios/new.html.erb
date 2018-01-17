@@ -1,5 +1,11 @@
+<% if logged_in? -%>
+Conectado como <%=Usuario.find(session[:user_id]).nombre %><br>
+Ve a tu <%= link_to "dashboard.", usuarios_path %><br>
+O <%= link_to "cierra sesión.", logout_path, method: :delete %>
+<% else -%>
 <h1>Registro de Usuario</h1>
 
 <%= render 'form', usuario: @usuario %>
 
 <%= link_to 'Regresar', login_path %>
+<% end -%>
