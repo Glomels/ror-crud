@@ -26,7 +26,7 @@ class EmpleadosController < ApplicationController
   def create
     params[:usuario_id] = session[:user_id]
     @empleado = Empleado.new(empleado_params)
-    @sucursal.usuario_id = session[:user_id]
+    @empleado.usuario_id = session[:user_id]
 
     respond_to do |format|
       if @empleado.save
