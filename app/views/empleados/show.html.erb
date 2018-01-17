@@ -21,8 +21,8 @@
 </p>
 
 <p>
-  <strong>Usuario:</strong>
-  <%= @empleado.usuario_id %>
+  <strong>Administrador:</strong>
+  <%= Usuario.find_by(id: @empleado.usuario_id ) %>
 </p>
 
 <p>
