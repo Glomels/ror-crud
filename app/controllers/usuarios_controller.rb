@@ -29,9 +29,11 @@ class UsuariosController < ApplicationController
     respond_to do |format|
       if @usuario.save
         log_in(@usuario)
+        
         format.html { redirect_to usuarios_path }
         format.json { render :show, status: ok, location: @usuario }
       else
+        format.js { render 'usuarios/validator' }
         format.html { render :new }
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
       end
@@ -46,6 +48,7 @@ class UsuariosController < ApplicationController
         format.html { redirect_to @usuario, notice: 'Información actualizada.' }
         format.json { render :show, status: :ok, location: @usuario }
       else
+        format.js { render 'usuarios/validator' }
         format.html { render :edit }
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
       end

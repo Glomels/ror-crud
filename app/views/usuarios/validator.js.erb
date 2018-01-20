@@ -1,0 +1,32 @@
+$(".form-error").css({"color": "red", "font-weight": "bold"});
+var error = '';
+error += "Los campos en rojo son requeridos<br>";
+$("input").each(function(index, element){
+  if ($(element).val() == '')
+    {
+      $(element).css( "border", "3px solid red" );
+    }
+  
+});
+
+if($("#usuario_password").val() != $("#usuario_password_confirmation").val())
+{
+  if($("#usuario_password").val() == "")
+    error += "Por favor ingrese una contraseña<br>";
+  else
+    error += "Las contraseñas no coinciden <br>";
+    
+$(".form-error").html(error);
+}
+
+
+if($("#usuario_rfc").val().length != 13 || $("usuario_rfc").val().length != 12)
+  {
+
+if($("#usuario_rfc").val() != "")
+    {error += "El RFC que ingresó tiene una longitud inválida <br>";}
+}
+$(".form-error").html(error);
+
+
+  

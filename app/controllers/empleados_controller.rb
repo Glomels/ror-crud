@@ -33,6 +33,7 @@ class EmpleadosController < ApplicationController
         format.html { redirect_to @empleado, notice: 'Empleado ha sido registrado.' }
         format.json { render :show, status: :created, location: @empleado }
       else
+        format.js { render 'empleados/validator' }
         format.html { render :new }
         format.json { render json: @empleado.errors, status: :unprocessable_entity }
       end
@@ -47,6 +48,7 @@ class EmpleadosController < ApplicationController
         format.html { redirect_to @empleado, notice: 'La informaciíon del empleado ha sido actualizada.' }
         format.json { render :show, status: :ok, location: @empleado }
       else
+        format.js { render 'empleados/validator' }
         format.html { render :edit }
         format.json { render json: @empleado.errors, status: :unprocessable_entity }
       end

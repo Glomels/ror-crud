@@ -1,0 +1,12 @@
+$(".form-error").css({"color": "red", "font-weight": "bold"});
+var error = '';
+error += "El correo y/o contraseña que ingresó son incorrectos.";
+$("input").each(function(index, element){
+  if ($(element).val() == '')
+    {
+      $(element).css( "border", "3px solid red" );
+      error = "Los campos en rojo son requeridos<br>";
+    }
+  
+});
+$(".form-error").html(error);

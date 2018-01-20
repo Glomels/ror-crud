@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+  #respond_to :js
   def new
   end
 
@@ -10,8 +10,11 @@ class SessionsController < ApplicationController
       redirect_to usuarios_path
     else
       # Create an error message.
-      flash.now[:danger] = 'El correo electrónico y/o contraseña ingresados no son correctos.'
-      render 'new'
+      respond_to do |format|
+        format.js { render 'sessions/new' }
+      end
+      #flash.now[:danger] = 'El correo electrónico y/o contraseña ingresados no son correctos.'
+      #render 'new'
     end
   end
 

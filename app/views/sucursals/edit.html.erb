@@ -1,4 +1,6 @@
 <h1>Editing Sucursal</h1>
+<p class="form-error">  
+</p>
 <% if @sucursal.usuario_id == session[:user_id] %>
 <%= render 'form', sucursal: @sucursal %>
 <% else %>

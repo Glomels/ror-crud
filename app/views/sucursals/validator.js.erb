@@ -1,0 +1,23 @@
+$(".form-error").css({"color": "red", "font-weight": "bold"});
+var error = '';
+
+
+if ($("#sucursal_nombre").val() == '')
+    {
+error += "Por favor escriba un nombre para la sucursal<br>";
+      $("#sucursal_nombre").css( "border", "3px solid red" );
+    }
+
+if($("#sucursal_numero_exterior").val() != "")
+if(!parseInt($("#sucursal_numero_exterior").val()))
+error += "Número exterior inválido<br>";
+
+if($("#sucursal_numero_interior").val() != "")
+if(!parseInt($("#sucursal_numero_interior").val()))
+error += "Número interior inválido<br>";
+
+if($("#sucursal_codigo_postal").val() != "")
+if(!parseInt($("#sucursal_codigo_postal").val()))
+error += "Código postal inválido<br>";
+
+$(".form-error").html(error);

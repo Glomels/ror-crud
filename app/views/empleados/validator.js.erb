@@ -1,0 +1,17 @@
+$(".form-error").css({"color": "red", "font-weight": "bold"});
+var error = '';
+error += "Los campos en rojo son requeridos<br>";
+if ($("#empleado_nombre").val() == '')
+    {
+      $("#empleado_nombre").css( "border", "3px solid red" );
+    }
+if ($("#empleado_rfc").val() == '')
+    {
+      $("#empleado_rfc").css( "border", "3px solid red" );
+    }
+if ($("#sucursal_select").val() == '')
+    {
+      $("#sucursal_select").css( "border", "3px solid red" );
+    }
+
+$(".form-error").html(error);

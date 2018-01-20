@@ -7,10 +7,11 @@ O <%= link_to "cierra sesión.", logout_path, method: :delete %>
 
 <% provide(:title, "Log in") %>
 <h1>Registro al Sistema</h1>
-
+<p class="form-error">  
+</p>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+    <%= form_for(:session, url: login_path, :html=>{:id=>"login_form",:remote=>true}) do |f| %>
     
       <% if flash[:danger] -%>
       <p class="error"><%= flash[:error] %>

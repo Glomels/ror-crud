@@ -5,6 +5,9 @@ O <%= link_to "cierra sesión.", logout_path, method: :delete %>
 <% else -%>
 <h1>Registro de Usuario</h1>
 
+<p class="form-error">  
+</p>
+
 <%= render 'form', usuario: @usuario %>
 
 <%= link_to 'Regresar', login_path %>

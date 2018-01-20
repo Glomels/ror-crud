@@ -33,6 +33,7 @@ class SucursalsController < ApplicationController
         format.html { redirect_to @sucursal, notice: 'Sucursal ha sido creada.' }
         format.json { render :show, status: :created, location: @sucursal }
       else
+        format.js { render 'sucursals/validator' }
         format.html { render :new }
         format.json { render json: @sucursal.errors, status: :unprocessable_entity }
       end
@@ -47,6 +48,7 @@ class SucursalsController < ApplicationController
         format.html { redirect_to @sucursal, notice: 'Sucursal ha sido actualizada.' }
         format.json { render :show, status: :ok, location: @sucursal }
       else
+        format.js { render 'sucursals/validator' }
         format.html { render :edit }
         format.json { render json: @sucursal.errors, status: :unprocessable_entity }
       end

@@ -1,6 +1,7 @@
 <h1>Registrar Sucursal</h1>
-
-<%= form_with(model: @sucursal, local: true) do |form| %>
+<p class="form-error">  
+</p>
+<%= form_with(model: @sucursal, :html=>{:id=>"sucursal_form", :remote=>"true"}) do |form| %>
   <% if @sucursal.errors.any? %>
     <div id="error_explanation">
       <h2><%= @sucursal.errors.count%> errores encontrados</h2>

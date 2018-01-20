@@ -1,4 +1,4 @@
-<%= form_with(model: usuario, local: true) do |form| %>
+<%= form_with(model: usuario, :html=>{:id=>"user_form", :remote=>"true"}) do |form| %>
   <% if usuario.errors.any? %>
     <div id="error_explanation">
       <h2><%= usuario.errors.count %> errores encontrados :( </h2>

@@ -14,6 +14,8 @@ es:
       models:
         empleado:
           attributes:
+            nombre:
+              blank: "Por favor ingrese un nombre para el empleado"
             rfc:
               taken: "Este RFC ya existe en el sistema."
             sucursal:
